@@ -1,0 +1,6 @@
+{
+  "sources": [
+    {"name": "State of Iowa Procurement", "level": "State", "portal_url": "https://bidopportunities.iowa.gov/Home", "feed_url": ""},
+    {"name": "City of Des Moines Procurement", "level": "City", "portal_url": "https://www.demandstar.com/", "feed_url": ""}
+  ]
+}
