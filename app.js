@@ -10,8 +10,11 @@ function formatDate(date){if(!date)return 'Check official notice';return new Dat
 function render(){
  const q=$('search').value.trim().toLowerCase(),cat=$('category').value,st=$('state').value;
  let items=opportunities.filter(o=>(!savedOnly||saved.includes(o.id))&&(cat==='all'||o.category===cat)&&(st==='all'||o.state===st)&&[o.title,o.city,o.state,stateLookup[o.state],o.category,o.agency,o.type].join(' ').toLowerCase().includes(q));
+ const deadlineFilter=$('deadlineFilter').value;
+ const today=new Date();today.setHours(0,0,0,0);
+ items=items.filter(o=>{if(deadlineFilter==='all')return true;if(deadlineFilter==='unknown')return !o.deadline;if(!o.deadline)return false;const end=new Date(o.deadline+'T12:00:00');const days=(end-today)/86400000;return days>=0&&days<=Number(deadlineFilter);});
  const sort=$('sort').value;
- items.sort((a,b)=>sort==='state'?(a.state||'ZZ').localeCompare(b.state||'ZZ'):sort==='title'?a.title.localeCompare(b.title):(a.deadline||'9999').localeCompare(b.deadline||'9999'));
+ items.sort((a,b)=>sort==='state'?(a.state||'ZZ').localeCompare(b.state||'ZZ'):sort==='title'?a.title.localeCompare(b.title):sort==='posted'?(b.posted||'').localeCompare(a.posted||''):(a.deadline||'9999').localeCompare(b.deadline||'9999'));
  $('cards').replaceChildren();
  for(const o of items){
   const article=text('article','','card'),left=document.createElement('div'),right=text('div','','side');
@@ -21,10 +24,10 @@ function render(){
   const btn=text('button',saved.includes(o.id)?'★ Saved':'☆ Save','save'+(saved.includes(o.id)?' active':''));btn.type='button';btn.addEventListener('click',()=>{saved=saved.includes(o.id)?saved.filter(id=>id!==o.id):[...saved,o.id];try{localStorage.setItem('bidscout-saved-v2',JSON.stringify(saved))}catch{}render()});
   right.append(date,link,btn);article.append(left,right);$('cards').append(article);
  }
- $('empty').hidden=items.length!==0;$('resultCount').textContent=items.length+' federal results';$('savedCount').textContent=saved.length;$('savedToggle').textContent='Saved ('+saved.length+')'+(savedOnly?' ✓':'');
+ $('empty').hidden=items.length!==0;$('resultCount').textContent=items.length+' federal results';$('savedCount').textContent=saved.length;$('dashboardSaved').textContent=saved.length;$('savedToggle').textContent='Saved ('+saved.length+')'+(savedOnly?' ✓':'');
 }
-['search','category','state','sort'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));
-$('clear').addEventListener('click',()=>{$('search').value='';$('category').value='all';$('state').value='all';$('sort').value='deadline';savedOnly=false;render()});
+['search','category','state','sort','deadlineFilter'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));
+$('clear').addEventListener('click',()=>{$('search').value='';$('category').value='all';$('state').value='all';$('sort').value='deadline';$('deadlineFilter').value='all';savedOnly=false;render()});
 $('savedToggle').addEventListener('click',()=>{savedOnly=!savedOnly;render();$('opportunities').scrollIntoView({behavior:'smooth'})});
 $('year').textContent=new Date().getFullYear();
 async function load(){
@@ -38,6 +41,9 @@ async function load(){
   if(stale){opportunities=[];$('dataStatus').textContent='Live data unavailable or older than 3 days. Listings are hidden until a successful update. Check back later.';}
   else {$('dataStatus').textContent=`Federal SAM.gov feed last updated ${new Date(data.updatedAt).toLocaleString()}. ${data.coverageNote||'Limited federal coverage.'} Verify every deadline and requirement at SAM.gov.`;}
  }catch{$('dataStatus').textContent='Live data unavailable. No unverified listings are shown. Please check back later.';opportunities=[];}
+ const today=new Date();today.setHours(0,0,0,0);
+ $('totalCount').textContent=opportunities.length;
+ $('soonCount').textContent=opportunities.filter(o=>o.deadline&&((new Date(o.deadline+'T12:00:00')-today)/86400000)<=7&&((new Date(o.deadline+'T12:00:00')-today)/86400000)>=0).length;
  render();
 }
 load();
