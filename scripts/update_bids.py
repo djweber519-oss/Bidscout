@@ -132,8 +132,12 @@ if __name__ == '__main__':
             print(f"SAM.gov HTTP error: {e.code}", file=sys.stderr)
         elif isinstance(e, urllib.error.URLError):
             print("SAM.gov connection error", file=sys.stderr)
-       elif isinstance(e, RuntimeError):
-    print(str(e), file=sys.stderr)
+       
+        elif isinstance(e, RuntimeError):
+            if "No records returned" in str(e):
+                print("RuntimeError: No records returned", file=sys.stderr)
+            else:
+                print(str(e), file=sys.stderr)
         else:
             print(f"Updater error type: {type(e).__name__}", file=sys.stderr)
 
