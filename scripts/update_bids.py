@@ -91,7 +91,16 @@ def main():
     tmp.replace(OUTPUT)
     print(f'Updated {len(items)} curated notices from {count} records; no credentials stored.')
 
+
 if __name__ == '__main__':
-   try: main()
-except Exception:
-    sys.exit('Update failed; existing data unchanged. Verify secret and SAM.gov API availability. No request details logged.')
+    try:
+        main()
+    except Exception as e:
+        import urllib.error
+        if isinstance(e, urllib.error.HTTPError):
+            print(f"SAM.gov HTTP error: {e.code}", file=sys.stderr)
+        elif isinstance(e, urllib.error.URLError):
+            print("SAM.gov connection error", file=sys.stderr)
+        else:
+            print(f"Updater error type: {type(e).__name__}", file=sys.stderr)
+        sys.exit(1)
