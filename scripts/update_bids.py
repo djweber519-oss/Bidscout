@@ -92,7 +92,6 @@ def main():
     print(f'Updated {len(items)} curated notices from {count} records; no credentials stored.')
 
 if __name__ == '__main__':
-    try: main()
-    except Exception:
-        sys.exit('Update failed; existing data unchanged. Verify secret and SAM.gov API availability. No request details logged.')
-
+   try: main()
+except Exception:
+    sys.exit('Update failed; existing data unchanged. Verify secret and SAM.gov API availability. No request details logged.')
