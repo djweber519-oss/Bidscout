@@ -92,17 +92,23 @@ def main():
     print(f'Updated {len(items)} curated notices from {count} records; no credentials stored.')
 
 
+
 if __name__ == '__main__':
     try:
         main()
     except Exception as e:
         import urllib.error
+
         if isinstance(e, urllib.error.HTTPError):
             print(f"SAM.gov HTTP error: {e.code}", file=sys.stderr)
         elif isinstance(e, urllib.error.URLError):
             print("SAM.gov connection error", file=sys.stderr)
+        elif isinstance(e, RuntimeError):
+            if "No records returned" in str(e):
+                print("RuntimeError: No records returned", file=sys.stderr)
+            else:
+                print("RuntimeError: Other runtime error", file=sys.stderr)
         else:
             print(f"Updater error type: {type(e).__name__}", file=sys.stderr)
-if isinstance(e, RuntimeError):
-    print("RuntimeError category:", "No records returned" if "No records returned" in str(e) else "Other runtime error", file=sys.stderr)
+
         sys.exit(1)
