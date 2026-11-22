@@ -1,0 +1,25 @@
+name: Check Iowa public bid feeds
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 13 * * *'
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/update_iowa.py
+      - name: Commit Iowa feed results if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/iowa_bids.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update Iowa public bid feeds'
+            git push
+          fi
