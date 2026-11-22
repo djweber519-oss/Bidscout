@@ -30,15 +30,44 @@ def date_only(value):
         except ValueError: pass
     return None
 
+
 def get_page(key, code, start, end, offset):
-    params = {'api_key': key, 'postedFrom': start, 'postedTo': end, 'ncode': code, 'limit': 100, 'offset': offset}
-    req = urllib.request.Request(API + '?' + urllib.parse.urlencode(params), headers={'Accept': 'application/json', 'User-Agent': 'BidScout/2.0'})
+    params = {
+        'api_key': key,
+        'postedFrom': start,
+        'postedTo': end,
+        'ncode': code,
+        'limit': 100,
+        'offset': offset
+    }
+
+    url = API + '?' + urllib.parse.urlencode(params)
+    req = urllib.request.Request(
+        url,
+        headers={
+            'Accept': 'application/json',
+            'User-Agent': 'BidScout/3.1'
+        }
+    )
+
     try:
         with urllib.request.urlopen(req, timeout=35) as response:
             return json.load(response)
-    except Exception:
-        # Avoid logging URL or exception: they can contain the API key.
-        raise RuntimeError('SAM.gov request failed. Check API key, access limits, and service status (details suppressed to protect secret).') from None
+
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(
+            f"SAM.gov returned HTTP {e.code} for NAICS {code}"
+        ) from None
+
+    except urllib.error.URLError:
+        raise RuntimeError(
+            "SAM.gov connection failed"
+        ) from None
+
+    except Exception as e:
+        raise RuntimeError(
+            f"Updater request error: {type(e).__name__}"
+        ) from None
 
 def main():
     key = os.getenv('SAM_API_KEY', '').strip()
