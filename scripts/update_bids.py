@@ -103,4 +103,6 @@ if __name__ == '__main__':
             print("SAM.gov connection error", file=sys.stderr)
         else:
             print(f"Updater error type: {type(e).__name__}", file=sys.stderr)
+if isinstance(e, RuntimeError):
+    print("RuntimeError category:", "No records returned" if "No records returned" in str(e) else "Other runtime error", file=sys.stderr)
         sys.exit(1)
