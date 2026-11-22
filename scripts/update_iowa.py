@@ -50,17 +50,19 @@ def main():
     if failures:
         raise RuntimeError('Source checks failed; prior data preserved: ' + '; '.join(failures))
     # If no live feeds have been configured, do not claim successful discovery.
+   
     if not feeds:
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    if not OUTPUT.exists():
-        OUTPUT.write_text(json.dumps({
-            'updatedAt': None,
-            'sourceCount': 0,
-            'opportunities': [],
-            'note': 'No verified Iowa procurement feeds connected yet.'
-        }, indent=2) + '\n', encoding='utf-8')
-    print('No verified Iowa feeds connected. No contracts collected.')
-    return
+        OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+        if not OUTPUT.exists():
+            OUTPUT.write_text(json.dumps({
+                'updatedAt': None,
+                'sourceCount': 0,
+                'opportunities': [],
+                'note': 'No verified Iowa procurement feeds connected yet.'
+            }, indent=2) + '\n', encoding='utf-8')
+        print('No verified Iowa feeds connected. No contracts collected.')
+        return
+
     unique = {item['url']: item for item in results}
     payload = {'updatedAt': dt.datetime.now(dt.timezone.utc).isoformat(), 'sourceCount': len(feeds), 'opportunities': list(unique.values()), 'note': 'Feed-title matches only. Deadlines are not verified; confirm at the issuing agency.'}
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
