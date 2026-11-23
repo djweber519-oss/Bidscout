@@ -1,0 +1,406 @@
+{
+  "updatedAt": "2026-11-23T00:03:58.355855+00:00",
+  "registeredCounties": 99,
+  "connectedCounties": 0,
+  "unconnectedCounties": 99,
+  "opportunities": [],
+  "countyChecks": [
+    {
+      "county": "Adair",
+      "status": "not_connected"
+    },
+    {
+      "county": "Adams",
+      "status": "not_connected"
+    },
+    {
+      "county": "Allamakee",
+      "status": "not_connected"
+    },
+    {
+      "county": "Appanoose",
+      "status": "not_connected"
+    },
+    {
+      "county": "Audubon",
+      "status": "not_connected"
+    },
+    {
+      "county": "Benton",
+      "status": "not_connected"
+    },
+    {
+      "county": "Black Hawk",
+      "status": "not_connected"
+    },
+    {
+      "county": "Boone",
+      "status": "not_connected"
+    },
+    {
+      "county": "Bremer",
+      "status": "not_connected"
+    },
+    {
+      "county": "Buchanan",
+      "status": "not_connected"
+    },
+    {
+      "county": "Buena Vista",
+      "status": "not_connected"
+    },
+    {
+      "county": "Butler",
+      "status": "not_connected"
+    },
+    {
+      "county": "Calhoun",
+      "status": "not_connected"
+    },
+    {
+      "county": "Carroll",
+      "status": "not_connected"
+    },
+    {
+      "county": "Cass",
+      "status": "not_connected"
+    },
+    {
+      "county": "Cedar",
+      "status": "not_connected"
+    },
+    {
+      "county": "Cerro Gordo",
+      "status": "not_connected"
+    },
+    {
+      "county": "Cherokee",
+      "status": "not_connected"
+    },
+    {
+      "county": "Chickasaw",
+      "status": "not_connected"
+    },
+    {
+      "county": "Clarke",
+      "status": "not_connected"
+    },
+    {
+      "county": "Clay",
+      "status": "not_connected"
+    },
+    {
+      "county": "Clayton",
+      "status": "not_connected"
+    },
+    {
+      "county": "Clinton",
+      "status": "not_connected"
+    },
+    {
+      "county": "Crawford",
+      "status": "not_connected"
+    },
+    {
+      "county": "Dallas",
+      "status": "not_connected"
+    },
+    {
+      "county": "Davis",
+      "status": "not_connected"
+    },
+    {
+      "county": "Decatur",
+      "status": "not_connected"
+    },
+    {
+      "county": "Delaware",
+      "status": "not_connected"
+    },
+    {
+      "county": "Des Moines",
+      "status": "not_connected"
+    },
+    {
+      "county": "Dickinson",
+      "status": "not_connected"
+    },
+    {
+      "county": "Dubuque",
+      "status": "not_connected"
+    },
+    {
+      "county": "Emmet",
+      "status": "not_connected"
+    },
+    {
+      "county": "Fayette",
+      "status": "not_connected"
+    },
+    {
+      "county": "Floyd",
+      "status": "not_connected"
+    },
+    {
+      "county": "Franklin",
+      "status": "not_connected"
+    },
+    {
+      "county": "Fremont",
+      "status": "not_connected"
+    },
+    {
+      "county": "Greene",
+      "status": "not_connected"
+    },
+    {
+      "county": "Grundy",
+      "status": "not_connected"
+    },
+    {
+      "county": "Guthrie",
+      "status": "not_connected"
+    },
+    {
+      "county": "Hamilton",
+      "status": "not_connected"
+    },
+    {
+      "county": "Hancock",
+      "status": "not_connected"
+    },
+    {
+      "county": "Hardin",
+      "status": "not_connected"
+    },
+    {
+      "county": "Harrison",
+      "status": "not_connected"
+    },
+    {
+      "county": "Henry",
+      "status": "not_connected"
+    },
+    {
+      "county": "Howard",
+      "status": "not_connected"
+    },
+    {
+      "county": "Humboldt",
+      "status": "not_connected"
+    },
+    {
+      "county": "Ida",
+      "status": "not_connected"
+    },
+    {
+      "county": "Iowa",
+      "status": "not_connected"
+    },
+    {
+      "county": "Jackson",
+      "status": "not_connected"
+    },
+    {
+      "county": "Jasper",
+      "status": "not_connected"
+    },
+    {
+      "county": "Jefferson",
+      "status": "not_connected"
+    },
+    {
+      "county": "Johnson",
+      "status": "not_connected"
+    },
+    {
+      "county": "Jones",
+      "status": "not_connected"
+    },
+    {
+      "county": "Keokuk",
+      "status": "not_connected"
+    },
+    {
+      "county": "Kossuth",
+      "status": "not_connected"
+    },
+    {
+      "county": "Lee",
+      "status": "not_connected"
+    },
+    {
+      "county": "Linn",
+      "status": "not_connected"
+    },
+    {
+      "county": "Louisa",
+      "status": "not_connected"
+    },
+    {
+      "county": "Lucas",
+      "status": "not_connected"
+    },
+    {
+      "county": "Lyon",
+      "status": "not_connected"
+    },
+    {
+      "county": "Madison",
+      "status": "not_connected"
+    },
+    {
+      "county": "Mahaska",
+      "status": "not_connected"
+    },
+    {
+      "county": "Marion",
+      "status": "not_connected"
+    },
+    {
+      "county": "Marshall",
+      "status": "not_connected"
+    },
+    {
+      "county": "Mills",
+      "status": "not_connected"
+    },
+    {
+      "county": "Mitchell",
+      "status": "not_connected"
+    },
+    {
+      "county": "Monona",
+      "status": "not_connected"
+    },
+    {
+      "county": "Monroe",
+      "status": "not_connected"
+    },
+    {
+      "county": "Montgomery",
+      "status": "not_connected"
+    },
+    {
+      "county": "Muscatine",
+      "status": "not_connected"
+    },
+    {
+      "county": "O'Brien",
+      "status": "not_connected"
+    },
+    {
+      "county": "Osceola",
+      "status": "not_connected"
+    },
+    {
+      "county": "Page",
+      "status": "not_connected"
+    },
+    {
+      "county": "Palo Alto",
+      "status": "not_connected"
+    },
+    {
+      "county": "Plymouth",
+      "status": "not_connected"
+    },
+    {
+      "county": "Pocahontas",
+      "status": "not_connected"
+    },
+    {
+      "county": "Polk",
+      "status": "not_connected"
+    },
+    {
+      "county": "Pottawattamie",
+      "status": "not_connected"
+    },
+    {
+      "county": "Poweshiek",
+      "status": "not_connected"
+    },
+    {
+      "county": "Ringgold",
+      "status": "not_connected"
+    },
+    {
+      "county": "Sac",
+      "status": "not_connected"
+    },
+    {
+      "county": "Scott",
+      "status": "not_connected"
+    },
+    {
+      "county": "Shelby",
+      "status": "not_connected"
+    },
+    {
+      "county": "Sioux",
+      "status": "not_connected"
+    },
+    {
+      "county": "Story",
+      "status": "not_connected"
+    },
+    {
+      "county": "Tama",
+      "status": "not_connected"
+    },
+    {
+      "county": "Taylor",
+      "status": "not_connected"
+    },
+    {
+      "county": "Union",
+      "status": "not_connected"
+    },
+    {
+      "county": "Van Buren",
+      "status": "not_connected"
+    },
+    {
+      "county": "Wapello",
+      "status": "not_connected"
+    },
+    {
+      "county": "Warren",
+      "status": "not_connected"
+    },
+    {
+      "county": "Washington",
+      "status": "not_connected"
+    },
+    {
+      "county": "Wayne",
+      "status": "not_connected"
+    },
+    {
+      "county": "Webster",
+      "status": "not_connected"
+    },
+    {
+      "county": "Winnebago",
+      "status": "not_connected"
+    },
+    {
+      "county": "Winneshiek",
+      "status": "not_connected"
+    },
+    {
+      "county": "Woodbury",
+      "status": "not_connected"
+    },
+    {
+      "county": "Worth",
+      "status": "not_connected"
+    },
+    {
+      "county": "Wright",
+      "status": "not_connected"
+    }
+  ],
+  "note": "Only configured, verified RSS/Atom feeds are checked. Title/summary candidates require verification of eligibility, status, and deadline."
+}
